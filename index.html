@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101923">
+  <meta name="description" content="Lunar Shift: trò chơi STEM điều hành căn cứ cực Nam Mặt Trăng qua 10 ca nhiệm vụ.">
+  <title>Lunar Shift | Chỉ huy căn cứ</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="lunar.css">
+    <link rel="stylesheet" href="lunar-visual.css">
+</head>
+<body>
+  <div class="game-shell lunar-shell">
+    <header class="topbar">
+      <a class="brand" href="#game" aria-label="Lunar Shift - màn điều hành">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M22.7 4.8a12.1 12.1 0 1 0 4.5 20.9A12.7 12.7 0 0 1 22.7 4.8Z"/><path d="m8 22 5-5 3.1 2.3 4.7-6.1 4.5 4.3"/><circle cx="12.7" cy="11" r="1.5"/></svg></span>
+        <span><strong>LUNAR SHIFT</strong><small>TRẠM CỰC NAM · CA <b id="header-shift">01</b> / 10</small></span>
+      </a>
+      <div class="mission-chip"><span class="live-dot"></span><span>CHỈ HUY CA</span><b id="turn-timer">SHIFT 01</b></div>
+      <div class="top-actions"><button class="icon-button" id="help-button" aria-label="Mở hướng dẫn" title="Hướng dẫn"><span aria-hidden="true">?</span><span>HƯỚNG DẪN</span></button></div>
+    </header>
+
+    <main class="lunar-layout" id="game">
+      <section class="command-column" aria-label="Điều hành nhiệm vụ">
+        <div class="command-heading"><div><span class="eyebrow">LUNAR OUTPOST · SHACKLETON REGION</span><h1>Trung tâm điều hành</h1><p>Giữ căn cứ ổn định. Sửa module cất cánh. Đưa cả đội về nhà.</p></div><span class="sim-tag">MÔ PHỎNG GIÁO DỤC</span></div>
+
+        <section class="resource-panel lunar-resources" aria-label="Chỉ số căn cứ">
+          <div class="resource-item" data-stat="oxygen"><div class="resource-top"><span class="stat-icon oxygen-icon" aria-hidden="true">O₂</span><span class="stat-label">OXY</span><b id="oxygen-value">72</b></div><div class="meter"><i id="oxygen-meter"></i></div><small id="oxygen-caption">HỆ THỐNG DUY TRÌ SỰ SỐNG</small></div>
+          <div class="resource-item" data-stat="energy"><div class="resource-top"><span class="stat-icon energy-icon" aria-hidden="true">ϟ</span><span class="stat-label">ĐIỆN</span><b id="energy-value">68</b></div><div class="meter"><i id="energy-meter"></i></div><small id="energy-caption">MẢNG MẶT TRỜI · ỔN ĐỊNH</small></div>
+          <div class="resource-item" data-stat="food"><div class="resource-top"><span class="stat-icon food-icon" aria-hidden="true">＋</span><span class="stat-label">THỰC PHẨM</span><b id="food-value">70</b></div><div class="meter"><i id="food-meter"></i></div><small id="food-caption">NHÀ KÍNH · VỤ ĐANG LỚN</small></div>
+          <div class="resource-item risk-item" data-stat="radiation"><div class="resource-top"><span class="stat-icon risk-icon" aria-hidden="true">!</span><span class="stat-label">NGUY CƠ PHÓNG XẠ</span><b id="radiation-value">12</b></div><div class="meter"><i id="radiation-meter"></i></div><small>ĐƠN VỊ NGUY CƠ MÔ PHỎNG</small></div>
+          <div class="resource-item repair-item" data-stat="repair"><div class="resource-top"><span class="stat-icon repair-icon" aria-hidden="true">↗</span><span class="stat-label">SỬA TÀU</span><b id="repair-value">12</b></div><div class="meter"><i id="repair-meter"></i></div><small>MODULE CẤT CÁNH · MỤC TIÊU 100</small></div>
+        </section>
+
+        <section class="base-scene" aria-label="Hình minh họa căn cứ Mặt Trăng">
+          <div class="scene-label"><span class="scene-live"></span>CĂN CỨ CỰC NAM <span class="scene-separator">/</span> HÌNH MINH HỌA</div>
+          <div class="scene-art" aria-hidden="true">
+            <svg viewBox="0 0 1100 270" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#182c3d"/><stop offset=".78" stop-color="#52606a"/><stop offset="1" stop-color="#8c8c82"/></linearGradient><linearGradient id="ground" x2="0" y2="1"><stop stop-color="#9a998f"/><stop offset="1" stop-color="#696c6a"/></linearGradient><linearGradient id="hab" x2="0" y2="1"><stop stop-color="#e1e0d5"/><stop offset="1" stop-color="#8b9794"/></linearGradient></defs>
+              <rect width="1100" height="270" fill="url(#sky)"/><circle cx="914" cy="67" r="27" fill="#d9d8c5" opacity=".78"/><circle cx="914" cy="67" r="39" fill="none" stroke="#d9d8c5" opacity=".12"/><g fill="#e4e8df" opacity=".7"><circle cx="98" cy="43" r="1.3"/><circle cx="226" cy="72" r="1"/><circle cx="368" cy="35" r="1.2"/><circle cx="515" cy="59" r="1"/><circle cx="709" cy="30" r="1.1"/><circle cx="1030" cy="102" r="1.2"/></g>
+              <path d="M0 174 Q85 147 165 173T330 163T500 177T700 164T880 176T1100 157V270H0Z" fill="#535b60"/><path d="M0 205 Q150 178 270 207T510 196T730 209T950 192T1100 204V270H0Z" fill="url(#ground)"/>
+              <g stroke="#667278" stroke-width="3" fill="#384957"><path d="M82 201 205 178l82 18-119 26z"/><path d="m116 193 10 25m28-32 8 25m31-31 9 25m32-29 9 25"/><path d="M75 221v-18m220 7v-18"/></g>
+              <g transform="translate(412 126)"><path d="M0 53 88 5l89 48v67H0Z" fill="url(#hab)" stroke="#eceddf" stroke-width="2"/><path d="M17 51 88 15l70 37" fill="none" stroke="#65767b" stroke-width="5"/><rect x="22" y="64" width="44" height="37" fill="#263b4a" stroke="#c7d1c7"/><rect x="77" y="62" width="44" height="58" fill="#b3b7aa" stroke="#dfe2d6"/><rect x="131" y="64" width="34" height="36" fill="#344b5b" stroke="#c7d1c7"/><path d="M89 63v57m-12-24h24" stroke="#626e6d"/><circle cx="87" cy="45" r="5" fill="#d3b36d"/><path d="M88 5V-8m0 0 23-10" stroke="#d9dfd1" stroke-width="3"/><path d="M175 86h67m-67 16h67" stroke="#64747b" stroke-width="5"/><path d="M194 86v-24m33 40v20" stroke="#c7d0c4" stroke-width="3"/></g>
+              <g transform="translate(710 174)"><path d="m0 17 125-31 87 26-127 34z" fill="#253e51" stroke="#a7bbc0"/><path d="m20 15 10 28m28-36 10 28m28-37 10 28m28-36 10 27m28-34 10 28m28-36 10 27" stroke="#819aaa"/><path d="M44 37v31m132-58v27m-140 31h150" stroke="#b7b8aa" stroke-width="4"/><path d="m164 85 28-51 27 51z" fill="#c7c9bf" stroke="#e3e2d6"/><rect x="182" y="60" width="20" height="25" fill="#394e59"/></g>
+              <g fill="#484e50"><ellipse cx="364" cy="230" rx="17" ry="7"/><ellipse cx="333" cy="221" rx="10" ry="5"/><ellipse cx="1000" cy="223" rx="24" ry="7"/><ellipse cx="1035" cy="235" rx="12" ry="4"/></g>
+              <g transform="translate(337 194)"><circle cx="0" cy="0" r="10" fill="#d4d7c8"/><path d="M-9 7h18l6 26h-30z" fill="#c1c8bb" stroke="#e3e4d7"/><path d="M-14 13l-12 13m32-13 12 9m-18 1-8 15m12-15 7 15" stroke="#d9ddcf" stroke-width="4"/><rect x="-7" y="-4" width="14" height="9" rx="3" fill="#355167"/></g>
+            </svg>
+          </div>
+          <div class="scene-caption"><span>Đội 04 <b>· TẤT CẢ AN TOÀN</b></span><span>ECHO <b>· AI TẠI TRẠM</b></span><span id="scene-energy">MẢNG PIN <b>ĐANG PHÁT ĐIỆN</b></span></div>
+        </section>
+
+        <section class="crew-panel" aria-labelledby="crew-title">
+          <div class="section-heading"><div><span class="eyebrow">PHÂN CÔNG · MỖI NGƯỜI MỘT NHIỆM VỤ</span><h2 id="crew-title">Đội phi hành gia</h2></div><button class="emergency-button" id="emergency-button" title="Linh dùng lệnh khẩn cấp một lần mỗi ván">LỆNH KHẨN CẤP <kbd>1×</kbd></button></div>
+          <div class="crew-grid" id="crew-grid"></div>
+        </section>
+
+        <section class="command-bottom">
+          <div class="echo-message"><span class="echo-avatar" aria-hidden="true">E</span><p><span class="eyebrow">ECHO · TRỢ LÝ CĂN CỨ</span><b id="echo-hint">Chào chỉ huy. Hãy xem sự kiện, dự đoán đánh đổi và phân công cả đội.</b></p></div>
+          <button class="primary-button resolve-button" id="resolve-button" disabled><span>XEM DỰ BÁO</span><b>→</b></button>
+        </section>
+      </section>
+
+      <aside class="event-column" aria-label="Sự kiện và điều hành ca">
+        <section class="shift-panel"><div class="shift-heading"><span class="eyebrow">TIẾN TRÌNH NHIỆM VỤ</span><b><span id="shift-number">01</span><small> / 10 CA</small></b></div><div class="shift-track" id="shift-track" aria-label="Tiến trình 10 ca"></div><div class="shift-caption"><span>HẠ CÁNH KHẨN CẤP</span><span>TRỞ VỀ TRÁI ĐẤT</span></div></section>
+
+        <section class="event-card" aria-labelledby="event-title"><div class="event-topline"><span class="event-kicker"><i></i><span id="event-kind">SỰ KIỆN CA 01</span></span><span class="simulation-badge">KỊCH BẢN MÔ PHỎNG</span></div><h2 id="event-title">Đang kết nối ECHO…</h2><p class="event-description" id="event-description"></p><div class="event-source" id="event-source"></div><div class="choice-heading"><span class="eyebrow">CHỌN CÁCH ỨNG PHÓ</span><span>CHỌN 1</span></div><div class="choice-list" id="choice-list"></div></section>
+
+        <section class="actions-panel"><div class="section-heading"><div><span class="eyebrow">NHIỆM VỤ CỦA ĐỘI</span><h2>Hệ thống căn cứ</h2></div><span class="simulation-badge">5 NHIỆM VỤ</span></div><div class="action-list" id="action-list"></div><p class="action-footnote">Mọi điểm số là <b>đơn vị mô phỏng</b>, không phải số đo NASA.</p></section>
+
+        <section class="forecast-panel" id="forecast-panel"><div class="section-heading"><div><span class="eyebrow">TRƯỚC KHI XÁC NHẬN</span><h2>Dự báo ca này</h2></div><span class="forecast-mark" id="forecast-mark">—</span></div><p id="forecast-prompt">Chọn phương án và phân công đủ 4 người để xem thay đổi dự kiến.</p><div class="forecast-values" id="forecast-values"></div><p class="delayed-note" id="delayed-note"></p></section>
+
+        <div class="science-note"><span aria-hidden="true">i</span><p>NASA cung cấp bối cảnh khoa học. Mọi thay đổi chỉ số trong trò chơi là mô phỏng để học về đánh đổi.</p></div>
+      </aside>
+    </main>
+    <footer class="footer"><span>◉ <b>AI TẠI TRẠM</b> <i>HOẠT ĐỘNG</i></span><span>10 SHIFT · KHÔNG PHẢI 10 NGÀY MẶT TRĂNG</span><span class="build-tag">LUNAR SHIFT · BUILD 0.2.0</span></footer>
+  </div>
+
+  <dialog id="intro-dialog" class="story-dialog"><div class="story-art"><span class="story-sun"></span><span class="story-moon"></span><span class="story-base"></span></div><div class="story-copy"><span class="eyebrow">NASA SPACE APPS CHALLENGE · JUNIOR ASTRONAUT TRAINER</span><h2>Ca trực đầu tiên</h2><p>Tàu của đội gặp sự cố khi đến gần Mặt Trăng. Bốn phi hành gia đã hạ cánh xuống một tiền đồn ở cực Nam.</p><p>Bạn là chỉ huy ca tại căn cứ. Cân đối oxy, điện, thực phẩm và che chắn; sửa module cất cánh trong <b>10 ca nhiệm vụ</b> để đưa mọi người trở về.</p><div class="story-rule"><b>Chọn sự kiện</b><span>›</span><b>Phân công đội</b><span>›</span><b>Xem dự báo</b></div><button class="primary-button" id="start-button">BẮT ĐẦU NHIỆM VỤ <b>→</b></button></div></dialog>
+  <dialog id="result-dialog" class="result-dialog"><div class="result-top"><span class="eyebrow" id="result-kicker">WHAT YOU LEARNED · CA 01</span><button class="dialog-close" id="result-close" aria-label="Đóng kết quả">×</button></div><h2 id="result-title">Ca đã hoàn tất</h2><p class="result-summary" id="result-summary"></p><div class="result-delta" id="result-delta"></div><section class="lesson-box"><span class="eyebrow">BÀI HỌC CỦA CA</span><h3 id="lesson-title"></h3><p id="lesson-text"></p><a id="lesson-source" href="#" target="_blank" rel="noreferrer">ĐỌC NGUỒN KHOA HỌC ↗</a></section><p class="reflection" id="reflection-prompt">Bạn đã đánh đổi điều gì để bảo vệ căn cứ?</p><button class="primary-button result-continue" id="continue-button">TIẾP TỤC <b>→</b></button></dialog>
+  <dialog id="end-dialog" class="result-dialog end-dialog"><div class="result-top"><span class="eyebrow">MISSION DEBRIEF · LUNAR SHIFT</span><button class="dialog-close" id="end-close" aria-label="Đóng báo cáo">×</button></div><span class="end-stamp" id="end-stamp">NHIỆM VỤ HOÀN TẤT</span><h2 id="end-title">Đội đã sẵn sàng trở về</h2><p class="result-summary" id="end-reason"></p><div class="end-stats" id="end-stats"></div><section class="lesson-box"><span class="eyebrow">ĐIỀU CHÚNG TA ĐÃ HỌC</span><div id="debrief-lessons"></div><a href="https://www.nasa.gov/exploration-research-and-technology/growing-plants-in-space/" target="_blank" rel="noreferrer">NASA · GROWING PLANTS IN SPACE ↗</a><br><a href="https://science.nasa.gov/photojournal/south-pole-illumination-map/" target="_blank" rel="noreferrer">NASA LRO · SOUTH POLE ILLUMINATION ↗</a></section><p class="reflection">Bạn sẽ thay đổi quyết định nào nếu chơi lại?</p><button class="primary-button result-continue" id="replay-button">CHƠI LẠI <b>↻</b></button></dialog>
+  <dialog id="help-dialog" class="help-dialog"><form method="dialog"><button class="dialog-close" aria-label="Đóng hướng dẫn">×</button></form><span class="eyebrow">HƯỚNG DẪN NHANH</span><h2>Điều hành một ca</h2><ol><li>Đọc sự kiện và chọn cách ứng phó.</li><li>Chọn một nhiệm vụ cho từng người. Có thể giao nhiều người cùng một hệ thống.</li><li>Xem dự báo tài nguyên, rồi xác nhận ca.</li><li>Giữ Oxy, Điện, Thực phẩm lớn hơn 0; giữ nguy cơ dưới 100; đạt Sửa tàu 100 trước hết ca 10.</li></ol><p class="simulation-note">Các con số là đơn vị mô phỏng trong game. “10 ca” không có nghĩa là 10 ngày Mặt Trăng.</p><form method="dialog"><button class="primary-button">ĐÃ HIỂU</button></form></dialog>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
